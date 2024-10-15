@@ -15,7 +15,7 @@ const ImageCard: FC<ImageCardType> = ({
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/photos/${id}`);
+        navigate(`/unsplash-photo-gallery/photos/${id}`);
     };
 
     return (

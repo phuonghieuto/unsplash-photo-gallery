@@ -23,6 +23,8 @@ jobs:
 
       - name: Build the project
         run: npm run build
+        env:
+          VITE_OPEN_AI_API_KEY: ${{ secrets.VITE_OPEN_AI_API_KEY }}
 
       - name: Configure user email
         run: git config --global user.email "phuonghieuto@gmail.com"

@@ -11,8 +11,8 @@ const App = () => {
         <Router>
             <Header />
             <Routes>
-                <Route path="/" element={<Content />} />
-                <Route path="/photos/:id" element={<PhotoDetail />} />
+                <Route path="/unsplash-photo-gallery" element={<Content />} />
+                <Route path="/unsplash-photo-gallery/photos/:id" element={<PhotoDetail />} />
             </Routes>
             <ToastContainer />
         </Router>
