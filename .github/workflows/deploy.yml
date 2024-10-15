@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Configure user email
+        run: git config --global user.email "phuonghieuto@gmail.com"
+
+      - name: Configure user name
+        run: git config --global user.name "phuonghieuto"
+
+      - name: Clear GitHub Pages cache
+        run: rm -rf node_modules/.cache/gh-pages/
+
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          VITE_OPEN_AI_API_KEY: ${{ secrets.VITE_OPEN_AI_API_KEY }}
