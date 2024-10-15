@@ -1,4 +1,4 @@
-import {AiOutlineInstagram, AiOutlineLike, AiOutlineTwitter} from "react-icons/ai";
+import { AiOutlineInstagram, AiOutlineLike, AiOutlineTwitter } from "react-icons/ai";
 import { FC } from "react";
 import { ImageCardType } from "../../types/types.ts";
 import { convertLikes } from "../../utils/utils.ts";
@@ -37,24 +37,24 @@ const ImageCard: FC<ImageCardType> = ({
                     src={user.profile_img}
                     alt="profile img"
                 />
-                <p className="flex flex-col italic">
-                    <span className="font-bold">{user.name}</span>
+                <p className="flex flex-col italic truncate">
+                    <span className="font-bold truncate">{user.name}</span>
                     <div className="flex flex-col">
                         {user.twitter_username && (
-                            <span className="text-sm text-gray-400 flex items-center gap-x-1">
+                            <span className="text-sm text-gray-400 flex items-center gap-x-1 truncate">
                 <AiOutlineTwitter /> {user.twitter_username}
-            </span>
+              </span>
                         )}
                         {user.instagram_username && (
-                            <span className="text-sm text-gray-400 flex items-center gap-x-1">
+                            <span className="text-sm text-gray-400 flex items-center gap-x-1 truncate">
                 <AiOutlineInstagram /> {user.instagram_username}
-            </span>
+              </span>
                         )}
                     </div>
                 </p>
-                <p className = "ml-auto flex items-center gap-x-1">
+                <p className="ml-auto flex items-center gap-x-1">
                     <AiOutlineLike />
-                    <span className = "text-xs">{convertLikes(likes)}</span>
+                    <span className="text-xs">{convertLikes(likes)}</span>
                 </p>
             </div>
         </article>
