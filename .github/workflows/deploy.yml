@@ -24,7 +24,7 @@ jobs:
       - name: Build the project
         run: npm run build
         env:
-          VITE_OPEN_AI_API_KEY: ${{ secrets.VITE_OPEN_AI_API_KEY }}
+          VITE_UNSPLASH_API_ACCESS_KEY: ${{ secrets.VITE_UNSPLASH_API_ACCESS_KEY }}
 
       - name: Configure user email
         run: git config --global user.email "phuonghieuto@gmail.com"
@@ -39,4 +39,4 @@ jobs:
         run: npm run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          VITE_OPEN_AI_API_KEY: ${{ secrets.VITE_OPEN_AI_API_KEY }}
+          VITE_UNSPLASH_API_ACCESS_KEY: ${{ secrets.VITE_UNSPLASH_API_ACCESS_KEY }}
