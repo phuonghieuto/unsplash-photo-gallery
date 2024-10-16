@@ -45,7 +45,7 @@ const Images = () => {
             loader={<Loader />}
             endMessage={<p style={{ textAlign: 'center' }}>No more images</p>}
         >
-            <div className="p-5 md:py-10 md:px-20 grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4">
+            <div className="p-2 md:p-5 md:py-10 md:px-20 grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 {images.map((imagesCol, index) => (
                     <ImagesCol key={index} images={imagesCol} />
                 ))}

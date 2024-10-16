@@ -63,7 +63,6 @@ const getListPhotos: TGetPhotos = async (page) => {
             params: { page, per_page: 30 },
         });
         if (res.data && res.data.length > 0) {
-            console.log(res.data);
             return res.data;
         } else {
             toast.warn(`No images found on page ${page}`);

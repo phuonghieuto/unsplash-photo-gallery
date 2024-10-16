@@ -37,21 +37,19 @@ const ImageCard: FC<ImageCardType> = ({
                     src={user.profile_img}
                     alt="profile img"
                 />
-                <p className="flex flex-col italic truncate">
+                <div className="flex flex-col italic truncate">
                     <span className="font-bold truncate">{user.name}</span>
-                    <div className="flex flex-col">
-                        {user.twitter_username && (
-                            <span className="text-sm text-gray-400 flex items-center gap-x-1 truncate">
-                <AiOutlineTwitter /> {user.twitter_username}
-              </span>
-                        )}
-                        {user.instagram_username && (
-                            <span className="text-sm text-gray-400 flex items-center gap-x-1 truncate">
-                <AiOutlineInstagram /> {user.instagram_username}
-              </span>
-                        )}
-                    </div>
-                </p>
+                    {user.twitter_username && (
+                        <span className="text-sm text-gray-400 flex items-center gap-x-1 truncate">
+                            <AiOutlineTwitter /> {user.twitter_username}
+                        </span>
+                    )}
+                    {user.instagram_username && (
+                        <span className="text-sm text-gray-400 flex items-center gap-x-1 truncate">
+                            <AiOutlineInstagram /> {user.instagram_username}
+                        </span>
+                    )}
+                </div>
                 <p className="ml-auto flex items-center gap-x-1">
                     <AiOutlineLike />
                     <span className="text-xs">{convertLikes(likes)}</span>

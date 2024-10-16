@@ -40,7 +40,7 @@ const PhotoDetail = () => {
                 Photo by: {` ${photo.user.name}`}
             </h5>
             <div
-                className="w-3/4 border border-gray-300 rounded-2xl overflow-hidden shadow-neutral-500 shadow-md bg-white"
+                className="w-11/12 border border-gray-300 rounded-2xl overflow-hidden shadow-neutral-500 shadow-md bg-white"
                 style={{ borderColor: photo.color }}>
                 <img src={photo.urls?.raw} alt={photo.description || "Photo"} className="w-full h-auto rounded-t-2xl" />
                 <div className="p-8">
