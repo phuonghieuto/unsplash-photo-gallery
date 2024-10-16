@@ -2,13 +2,7 @@ import { Random } from "unsplash-js/dist/methods/photos/types";
 
 type ImagesType = Random[];
 
-type TGetPhotos = (page: number) => Promise<ImagesType | []>;
-type TSearchPhotos = (searchQuery: string) => Promise<void>;
-type TGetRandomPhotos = () => Promise<ImagesType | []>;
-
-interface SearchBarType {
-    searchPhotos: TSearchPhotos;
-}
+type TGetPhotos = (page: number, setHasMore: (value: (((prevState: boolean) => boolean) | boolean)) => void) => Promise<ImagesType | []>;
 
 interface UserType {
     name: string;
@@ -45,16 +39,10 @@ interface ImageCardType {
     height: number;
 }
 
-export interface SelectedImage extends ImageCardType {
-    user: UserType;
-}
 
 export type {
-    SearchBarType,
     ImageCardType,
     UserType,
     ImagesType,
     TGetPhotos,
-    TSearchPhotos,
-    TGetRandomPhotos,
 };

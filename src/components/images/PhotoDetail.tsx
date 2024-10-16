@@ -1,27 +1,25 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AiOutlineTwitter, AiOutlineInstagram, AiOutlineLink } from "react-icons/ai";
-import unsplash from "../../api/unsplash";
+import { fetchPhoto } from "../../utils/utils.ts";
 import { ImageCardType } from "../../types/types.ts";
-import { toast } from "react-toastify";
 
 const PhotoDetail = () => {
+    // Get the photo ID from the URL parameters
     const { id } = useParams();
+    // State to store the photo details
     const [photo, setPhoto] = useState<ImageCardType | null>(null);
 
+    // Fetch photo details when the component mounts or the ID changes
     useEffect(() => {
-        const fetchPhoto = async () => {
-            try {
-                const res = await unsplash.get(`/photos/${id}`);
-                setPhoto(res.data);
-            } catch (error) {
-                console.error("Error fetching photo details:", error);
-                toast.error("Error fetching photo details.");
-            }
+        const fetchData = async () => {
+            const photoData = await fetchPhoto(id!);
+            setPhoto(photoData);
         };
-        fetchPhoto().then();
+        fetchData().then();
     }, [id]);
 
+    // Show a loading spinner if the photo details are not yet available
     if (!photo) {
         return (
             <div className="flex mt-10 justify-center min-h-screen">
@@ -48,7 +46,7 @@ const PhotoDetail = () => {
                     <div className="mb-5 text-gray-600">
                         <p className="text-xl mb-2">{photo.description}</p>
                         <p className="text-xl mb-2 italic">{photo.alt_description}</p>
-                            <p className="font-semibold">Size: {`${photo.width} x ${photo.height}`}</p>
+                        <p className="font-semibold">Size: {`${photo.width} x ${photo.height}`}</p>
                         <p className="mt-4">
                             Download this photo:
                             <a href={`${photo.urls?.raw}?force=true`} download className="ml-2 bg-green-500 text-white py-1 px-2 rounded-lg hover:bg-green-600 transition">Download</a>
