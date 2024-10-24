@@ -3,23 +3,29 @@ import { useEffect, useState } from "react";
 import { AiOutlineTwitter, AiOutlineInstagram, AiOutlineLink } from "react-icons/ai";
 import { fetchPhoto } from "../../utils/utils.ts";
 import { ImageCardType } from "../../types/types.ts";
+import NotFound from "../404/NotFound.tsx";
 
 const PhotoDetail = () => {
-    // Get the photo ID from the URL parameters
     const { id } = useParams();
-    // State to store the photo details
     const [photo, setPhoto] = useState<ImageCardType | null>(null);
+    const [notFound, setNotFound] = useState(false);
 
-    // Fetch photo details when the component mounts or the ID changes
     useEffect(() => {
         const fetchData = async () => {
             const photoData = await fetchPhoto(id!);
-            setPhoto(photoData);
+            if (photoData) {
+                setPhoto(photoData);
+            } else {
+                setNotFound(true);
+            }
         };
         fetchData().then();
     }, [id]);
 
-    // Show a loading spinner if the photo details are not yet available
+    if (notFound) {
+        return <NotFound />;
+    }
+
     if (!photo) {
         return (
             <div className="flex mt-10 justify-center min-h-screen">
