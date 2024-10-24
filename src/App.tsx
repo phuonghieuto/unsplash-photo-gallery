@@ -8,11 +8,11 @@ import PhotoDetail from './components/images/PhotoDetail.tsx';
 
 const App = () => {
     return (
-        <Router>
+        <Router basename="/unsplash-photo-gallery">
             <Header />
             <Routes>
-                <Route path="/unsplash-photo-gallery" element={<Content />} />
-                <Route path="/unsplash-photo-gallery/photos/:id" element={<PhotoDetail />} />
+                <Route path="/" element={<Content />} />
+                <Route path="/photos/:id" element={<PhotoDetail />} />
             </Routes>
             <ToastContainer />
         </Router>
